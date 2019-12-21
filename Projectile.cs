@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     float speed=10;  
+    float damage=1;
     public LayerMask collisionMask;
      // Update is called once per frame
     public void SetSpeed(float newSpeed)
@@ -29,7 +30,11 @@ public class Projectile : MonoBehaviour
     }
     void OnHitObject(RaycastHit hit)
     {
-        Debug.Log(hit.collider.gameObject.name);
+        IDamageable damageableObject=hit.collider.GetComponent<IDamageable>();
+        if(damageableObject != null)
+        {
+            damageableObject.TakeHit(damage,hit);
+        }
         Destroy(gameObject); //changes from SebLague used Destroy instead of Gameobject.Destroy
     }
 }

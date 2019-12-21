@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent (typeof(PlayerController))]
 [RequireComponent (typeof(GunController))]
-public class Player : MonoBehaviour
+public class Player : LivingEntity
 
 {
     Camera viewCamera;
     public float moveSpeed;
     private PlayerController controller;
     private GunController gunController;
-    void Start()
+    public override void Start()
     {
         controller=GetComponent<PlayerController>();
         gunController=GetComponent<GunController>();
