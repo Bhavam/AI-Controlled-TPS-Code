@@ -21,19 +21,19 @@ public class Projectile : MonoBehaviour
     }
     void CheckCollisions(float moveDistance)
     {
-      Ray ray=new Ray (transform.position,transform.forward);
-      RaycastHit hit;
-      if(Physics.Raycast(ray,out hit,moveDistance,collisionMask,QueryTriggerInteraction.Collide))
+      Ray ray=new Ray (transform.position,transform.forward); // create a vector from pos of projectile thru its forward vector
+      RaycastHit hit; // check out how this works
+      if(Physics.Raycast(ray,out hit,moveDistance,collisionMask,QueryTriggerInteraction.Collide)) // check out how does QueryTriggerInteraction work
       {
           OnHitObject(hit);
       } 
     }
-    void OnHitObject(RaycastHit hit)
+    void OnHitObject(RaycastHit hit) // check out use of RaycastHit
     {
         IDamagable damagableObject=hit.collider.GetComponent<IDamagable>();
         if(damagableObject != null)
         {
-            damagableObject.TakeHit(damage,hit);
+            damagableObject.TakeHit(damage,hit); // check out the inheritance tree of use of this object
         }
         Destroy(gameObject); //changes from SebLague used Destroy instead of Gameobject.Destroy
     }

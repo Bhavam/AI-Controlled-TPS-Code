@@ -20,7 +20,7 @@ public class GunController : MonoBehaviour
       {
           Destroy(equippedGun.gameObject);
       }
-      equippedGun=Instantiate(gunToEquip) as Gun; //changed as some pos error
+      equippedGun=Instantiate(gunToEquip,weaponHold.position+new Vector3(-1,2,-1),weaponHold.rotation) as Gun; //changed as some pos error check it out
       equippedGun.transform.parent=weaponHold; //see how this works
    }
    public void Shoot()

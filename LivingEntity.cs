@@ -8,12 +8,12 @@ public class LivingEntity : MonoBehaviour,IDamagable
   protected bool dead;
   public float startingHealth;
 
-  public event System.Action OnDeath;
-  public virtual void Start()
+  public event System.Action OnDeath;  // use of event look up documentation
+  public virtual void Start() // use of virtual keyword look up use
   {
       health=startingHealth;
   }
-  public void TakeHit(float damage , RaycastHit hit)
+  public void TakeHit(float damage , RaycastHit hit) // health system and also check how does RaycastHit datatype work 
   {
       health-=damage;
       if(health <= 0 && !(dead))
@@ -22,10 +22,10 @@ public class LivingEntity : MonoBehaviour,IDamagable
   public void Die()
   {
     dead=true;
-    if(OnDeath != null)
+    if(OnDeath != null)  // event and delegation system use further research req
     {
         OnDeath();
     }
-    Destroy(gameObject);
+    Destroy(gameObject); // again changed the GameObject method call to direct call 
   }
 }
