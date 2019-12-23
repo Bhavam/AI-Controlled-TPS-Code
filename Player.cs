@@ -10,7 +10,7 @@ public class Player : LivingEntity
     public float moveSpeed;
     private PlayerController controller;
     private GunController gunController;
-    public override void Start()
+    protected override void Start()
     {
         controller=GetComponent<PlayerController>();
         gunController=GetComponent<GunController>();
